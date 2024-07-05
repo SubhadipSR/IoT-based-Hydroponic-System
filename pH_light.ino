@@ -1,6 +1,6 @@
-#define BLYNK_TEMPLATE_ID "TMPL3AwTXlPyC"
-#define BLYNK_TEMPLATE_NAME "Hydrponics System"
-#define BLYNK_AUTH_TOKEN "AJXwBqUNwdA9J7rUFt4dUWW1VVmDgQGf"
+#define BLYNK_TEMPLATE_ID "define your template id" 
+#define BLYNK_TEMPLATE_NAME "define template name"
+#define BLYNK_AUTH_TOKEN "define auth token"
 
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
@@ -18,8 +18,8 @@ NTPClient timeClient(ntpUDP, "pool.ntp.org", 19800); // Indian timezone, adjust 
 ESP8266WebServer server(80);
 
 // WiFi credentials
-char ssid[] = "MAKAUT_WB";
-char pass[] = "Cisco@123";
+char ssid[] = "ssid"; //define your wifi ssid
+char pass[] = "password"; //define your wifi password
 
 const int phPin = A0;   // Analog pin connected to the pH sensor
 const int apumpPin = D4;   // Digital pin connected to the first pump
