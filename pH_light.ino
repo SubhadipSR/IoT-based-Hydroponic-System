@@ -22,18 +22,13 @@ char ssid[] = "ssid"; //define your wifi ssid
 char pass[] = "password"; //define your wifi password
 
 const int phPin = A0;   // Analog pin connected to the pH sensor
-const int apumpPin = D4;   // Digital pin connected to the first pump
-const int bpumpPin = D3;    // Digital pin connected to the second pump
-const int lightPin = D0;
+const int apumpPin = D4;   // Digital pin connected to the acidic pump
+const int bpumpPin = D3;    // Digital pin connected to the basic pump
+const int lightPin = D0;    // Digital pin connected to the grow light
 const int phLowThreshold = 6.5;
 const int phHighThreshold = 7.5;
 const unsigned long pumpInterval = 300000;
 unsigned long previousMillis = 0;
-
-
-/*unsigned long myChannelNumber = 2474433;
-const char *myWriteAPIKey = "078XXR2AB8NEAVUD";
-const char *serve = "api.thingspeak.com";*/
 
 
 void automaticlight() {
@@ -113,7 +108,6 @@ void checkpH() {
     float intercept = 4 - slope * 1.5;
     float ph = slope * voltage + intercept;
     Blynk.virtualWrite(V1, ph);
-    //ThingSpeak.writeField(myChannelNumber, 2, ph, myWriteAPIKey);
     Serial.print("pH: ");
     Serial.println(ph);
     delay(2000);
