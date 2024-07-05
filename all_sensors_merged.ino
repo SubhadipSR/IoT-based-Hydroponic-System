@@ -1,6 +1,6 @@
-#define BLYNK_TEMPLATE_ID "TMPL3AwTXlPyC"
-#define BLYNK_TEMPLATE_NAME "Hydrponics System"
-#define BLYNK_AUTH_TOKEN "AJXwBqUNwdA9J7rUFt4dUWW1VVmDgQGf"
+#define BLYNK_TEMPLATE_ID "define your template id" 
+#define BLYNK_TEMPLATE_NAME "define template name"
+#define BLYNK_AUTH_TOKEN "define auth token"
 #define BLYNK_PRINT Serial
 
 #include <ESP8266WiFi.h>
@@ -10,8 +10,8 @@
 
 
 
-const char* ssid = "MAKAUT_WB";
-const char* password =  "Cisco@123";
+const char* ssid = "ssid"; // Define your wifi ssid/name
+const char* password =  "password"; //Define your wifi password
 
 
 
@@ -22,7 +22,7 @@ const int ultraSonicEcho = D1; // Echo pin for ultrasonic sensor
 const int fanPin = D7; // Digital pin for fan
 const int npumpPin = D3;  //Digital pin for nutrients pump(TDS)
 const int wpumpPin = D5;  //Digital pin for water pump
-const int airpumpPin = D6;  //Digital pin for water pump
+const int airpumpPin = D6;  //Digital pin for air pump
 
 
 #define DHTTYPE DHT11 
@@ -37,8 +37,8 @@ const int maxDistance = 35; // Change this based on desired distance threshold
 unsigned long lastLoopTime = millis();
 unsigned long currentMillis = millis();
 const unsigned long inter = 5 * 60 * 60 * 1000; // 5 hours in milliseconds
-const long interval = 60 * 60 * 1000;
-const unsigned long npumpInterval = 300000;
+const long interval = 60 * 60 * 1000; // 1 hours in milliseconds
+const unsigned long npumpInterval = 300000; 
 unsigned long previousMillis = 0;
 unsigned long preMillis = 0;
 unsigned long prevMillis = 0;
@@ -46,7 +46,6 @@ bool airpumpState = LOW; // relay is initially off
 
 BlynkTimer timer;
 WiFiClient espClient;
-//BlynkSimpleLibEsp8266 blynk(BLYNK_AUTH_TOKEN, espClient);
 
 
 // Water pump control based on TDS
@@ -125,7 +124,7 @@ WiFiClient espClient;
 }
 
 
-  //Turn on submersible pump with the interval of 4 hrs
+  //Turn on submersible pump with the interval of 5 hrs
   void wpump() {
     if (currentMillis - previousMillis >= inter) {
       previousMillis = currentMillis;
@@ -140,7 +139,7 @@ WiFiClient espClient;
 
 
 
-  //Turn on air pump with the interval of 30 min
+  //Turn on air pump with the interval of 1 hour
   void airpump() {
     unsigned long curMillis = millis();
     if (curMillis - preMillis >= interval) {
